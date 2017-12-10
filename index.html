@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- meta:vp -->
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<!-- 这一段js需要放在引用文件之前 ，保证执行速度 -->
+	<script type="text/javascript">
+		// 屏幕宽度
+		// console.log(window.screen.width);
+		document.querySelector('html').style.fontSize = window.screen.width/20 +"px";
+		// 尺寸发生更改，重新计算
+		window.onresize =function(){
+			document.querySelector('html').style.fontSize = window.screen.width/20 +"px";
+		};
+	</script>
+	<title>百度外卖</title>
+	<!-- 为了降低请求的次数，把swiper的样式也合并了 -->
+	<!-- 导入swiper的css -->
+	<!-- <link rel="stylesheet" type="text/css" href="lib/swiper/css/swiper.min.css"> -->
+	
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+	<!-- 切换的内容页面 -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<!-- .swiper-slide{$}*7 -->
+			<div class="swiper-slide page1">
+				<div class="title">
+					<h3>生活中，</h3>
+					<p>偶尔会这样哦！</p>
+					<div class="line"></div>
+				</div>
+				
+				<div class="scroll_page1">
+					<div class="bg"></div>
+					<div class="person">
+						<div class="files">
+							<div class="paper1"></div>
+							<div class="paper2"></div>
+						</div>
+					</div>
+					
+					<div class="message_container">
+						<div class="info"></div>
+					</div>
+				</div>
+				<div class="scroll_page2">
+					<div class="bg"></div>
+					<div class="person">
+						<div class="eye"></div>
+					</div>
+					
+					<div class="message_container">
+						<div class="info"></div>
+					</div>
+				</div>
+				<div class="scroll_page3">
+					<div class="bg"></div>
+					<div class="person">
+						<!-- .word$*4 -->
+						<div class="word1"></div>
+						<div class="word2"></div>
+						<div class="word3"></div>
+						<div class="word4"></div>
+						
+					</div>
+					
+					<div class="message_container">
+						<div class="info"></div>
+					</div>
+				</div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="b_bear"></div>
+			</div>
+			<div class="swiper-slide page2">
+				<div class="title">
+					<h3>这时候，</h3>
+					<p>如果有一份美味外卖...<br>刚好出现...</p>
+					<div class="line"></div>
+				</div>
+				<div class="bg"></div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="bear">
+					<div class="leg"></div>
+					<div class="face1"></div>
+					<div class="face2"></div>
+				</div>
+			</div>
+			<div class="swiper-slide page3">
+				<div class="title">
+					<h3>那时候，</h3>
+					<p>如果一碗地沟油炒饭<br>刚好送到...</p>
+					<div class="line"></div>
+				</div>
+				<div class="bg"></div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="content">
+					<div class="person">
+						<div class="word1"></div>
+						<div class="word2"></div>
+						<div class="iphone">
+							<div class="hand"></div>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			<div class="swiper-slide page4">
+				<div class="title">
+					<h3>小熊外卖，</h3>
+					<p>绝对不送地沟油!</p>
+					<div class="line"></div>
+				</div>
+				<div class="bg"></div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="bear"></div>
+				<div class="card1"></div>
+				<div class="card2"></div>
+				<div class="card3"></div>
+			</div>
+			<div class="swiper-slide page5">
+				<div class="title">
+					<h3>只要不下刀子</h3>
+					<p>下什么...<br>我都准时送达</p>
+					<div class="line"></div>
+				</div>
+				<div class="bg"></div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="cloud">
+					<div class="snow"></div>
+					<div class="snow"></div>
+					<div class="snow"></div>
+					<div class="snow"></div>
+					<div class="snow"></div>
+					<div class="snow"></div>
+				</div>
+				<div class="bear">
+					<div class="smoke"></div>
+				</div>
+			</div>
+			<div class="swiper-slide page6">
+				<div class="title">
+					<h3>丰富礼品</h3>
+					<p>让你边吃边省钱...</p>
+					<div class="line"></div>
+				</div>
+				<div class="bg"></div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="bear">
+				<div class="gift-box">
+					<div><div class="gift1"></div></div>
+					<div><div class="gift2"></div></div>
+					<div><div class="gift3"></div></div>
+					<div><div class="gift4"></div></div>
+					<div><div class="gift5"></div></div>
+					<div><div class="gift6"></div></div>
+					<div><div class="gift7"></div></div>
+					<div><div class="gift8"></div></div>
+					<div><div class="gift9"></div></div>
+					<div><div class="gift10"></div></div>
+					<div><div class="gift11"></div></div>
+					<div><div class="gift12"></div></div>
+				</div>
+				</div>
+			</div>
+			<div class="swiper-slide page7">
+				<div class="title">
+					<h3>所有的努力</h3>
+					<p>就是为了把健康...<br>呈现给你...</p>
+					<div class="line"></div>
+				</div>
+				<div class="bg">
+					<div class="light"></div>
+				</div>
+				<!-- 星球 -->
+				<div class="sphere"></div>
+				<div class="motobike"></div>
+				<div class="bear">
+				<div class="share"></div>
+				<div class="info">waimai.xiaoxiong.com</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- loading页面 -->
+	<div class="loading">
+		<div class="rider"></div>
+		<div class="progress">
+			<div class="step"></div>
+		</div>
+		<div class="info"></div>
+		<div class="logo"></div>
+		<div class="copyright">@2017 Xiaoxiong</div>
+	</div>
+	<!-- 欢迎界面 -->
+	<div class="welcome">
+		<div class="info">
+			<div class="hello"></div>
+		</div>
+		<div class="cloud"></div>
+		<div class="grass1"></div>
+		<div class="trees"></div>
+		<div class="grass2"></div>
+		<div class="bear-box">
+			<div class="bear"></div>
+			<div class="smoke"></div>
+		</div>
+		<div class="rotate_btn_box">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="btn"></div>
+		</div>
+		<h4 class="hint">长按按钮进入</h4>
+
+	</div>
+
+	<!-- 音频播放按钮 -->
+	<audio src="music/bg.mp3" loop="loop" autoplay="autoplay"></audio>
+	<div class="audioPlay"></div>
+</body>
+</html>
+<script type="text/javascript" src="lib/swiper/js/swiper.min.js"></script>
+<!-- 导入zepto -->
+<script type="text/javascript" src="lib/zepto/zepto.js"></script>
+<script type="text/javascript" src="lib/zepto/event.js"></script>
+<script type="text/javascript" src="lib/zepto/fx.js"></script>
+<!-- 响应动画需要的文件 -->
+<script type="text/javascript" src="lib/zepto/fx_methods.js"></script>
+<!-- 响应长按事件需要的文件 -->
+<script type="text/javascript" src="lib/zepto/touch.js"></script>
+
+<script type="text/javascript">
+	var swiper = new Swiper('.swiper-container',{
+		 direction: 'vertical',
+		 // 添加回调函数
+		 onSlideChangeEnd:function(swiper){
+		 	// alert(swiper.activeIndex);
+		 	$('.swiper-slide').eq(swiper.activeIndex).addClass('animate').siblings().removeClass('animate');
+		 }
+	});
+
+
+	// 第一页页面打开，稍等一会儿执行动画
+	$(function(){
+		setTimeout(function(){
+			$('.loading').addClass('animate');
+			$('.loading .step').on('animationend',function(){
+				$('.loading').fadeOut(1000,function(){
+					$('.welcome').addClass('animate');
+				});
+			})
+		},800);
+	});
+
+	// 第二页长按事件
+	$('.welcome .btn').longTap(function(){
+		
+		// 无效果！！！！！！,因为这个是过渡效果，而我们自己写的是keyframe动画，写法上需要保持一致
+		// $('.bear-box').animate({
+		// 	transform:'translateY(100%) scale(2,2)',
+		// 	opacity:0
+		// },1000);
+
+		// zepto添加css中的动画
+		$('.bear-box').css('animation','bearDisappear 2s forwards');
+		setTimeout(function(){
+			$('.welcome').fadeOut(1000,function(){
+				$('.swiper-container .page1').addClass('animate');
+			});
+		},1000)
+		
+	})
+
+	// 为按钮绑定事件
+	var audio = document.querySelector('audio');
+
+	$('.audioPlay').click(function(){
+		// console.log(audio.paused);
+		if(audio.paused == false){
+			
+			audio.pause();
+			$(this).css('background','url(imgs/music/pause.png) no-repeat center / 100% 100%');
+			$(this).css('animation','rotate 0s');
+		}else{
+			audio.play();
+			$(this).css('background','url(imgs/music/play.png) no-repeat center / 100% 100%');
+			$(this).css('animation','rotate 3s linear infinite');
+		}
+	})
+	
+</script>

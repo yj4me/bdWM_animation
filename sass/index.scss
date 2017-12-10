@@ -1,0 +1,1361 @@
+//引入normalize
+@import 'normalize.scss';
+@import '../lib/swiper/css/swiper.min.scss';
+//引入base
+@import 'base.scss';
+
+// 设置高度100%
+html,body{height: 100%;}
+
+// 为了使用的时候有提示，写在index页面中
+
+// 计算尺寸函数
+//px to rem
+@function p2r($size){
+	@return($size/32)*1rem;
+}
+
+// 设置图片居中：混入
+@mixin bgc($url,$width){
+	background: url($url) no-repeat center / 100% 100%;
+	position: absolute;
+	left: 50%;
+	margin-left:p2r(-$width/2);
+}
+
+// 直接设置背景图，不考虑居中
+@mixin bg($url){
+	background: url($url) no-repeat center / 100% 100%;
+	position: absolute;
+}
+// 设置尺寸
+@mixin size($width,$height){
+	width:p2r($width);
+	height: p2r($height);
+}
+
+/*第一页*/
+.loading{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	z-index: 2;
+	background-color: #ffece9;
+	.rider{
+		position: absolute;
+		width: (154/32)*1rem;
+		height: (171/32)*1rem;
+		background: url(../imgs/loading/rider.png) no-repeat center / 100% 100%;
+		top:(233/32)*1rem;
+		right:(108/32)*1rem;
+	}
+	.progress{
+		position: absolute;
+		width: (416/32)*1rem;
+		height: (20/32)*1rem;
+		background-color: #fc2e4d;
+		border:2px solid #373838;
+		border-radius: (20/32)*1rem;
+		left: 50%;
+		margin-left: -(416/32/2)*1rem;
+		top:(410/32)*1rem;
+	}
+	.info{
+		position: absolute;
+		width: (220/32)*1rem;
+		height: (28/32)*1rem;
+		background: url(../imgs/loading/loading.png) no-repeat center / 100% 100%;
+		top:(470/32)*1rem;
+		left: 50%;
+		margin-left: -(220/32/2)*1rem;
+	}
+	.logo{
+		position: absolute;
+		width: (162/32)*1rem;
+		height: (39/32)*1rem;
+		background: url(../imgs/loading/logo.png) no-repeat center / 100% 100%;
+		bottom:(118/32)*1rem;
+		left: 50%;
+		margin-left: -(162/32/2)*1rem;
+	}
+	.copyright{
+		position: absolute;
+		bottom:(73/32)*1rem;
+		font-size: (24/32)*1rem;
+		color: #e0979d;
+		left: 50%;
+		transform:translateX(-50%);
+	}
+}
+
+// 直接调整样式为动画的初始状态
+// 为了可以走进度，在进度条中添加子元素
+.loading{
+	.progress{
+		background-color: transparent;
+		.step{
+			width: 10%;
+			height: 100%;
+			background-color: #ff2947;
+			position: absolute;
+			right: 0;
+		}
+	}
+	
+}
+
+.loading.animate{
+	.rider{
+		animation: bearRider 3s linear forwards;
+	}
+	.step{
+		animation: steps 3s linear forwards;
+	}
+}
+// 定义动画
+@keyframes steps{
+	to{
+		width: 100%;
+	}
+}
+@keyframes bearRider{
+	10%{
+		transform:translateX(p2r(-26*1)) translateY(p2r(-10));
+	}
+	20%{
+		transform:translateX(p2r(-26*2)) translateY(p2r(10));
+	}
+	30%{
+		transform:translateX(p2r(-26*3)) translateY(p2r(-10));
+	}
+	40%{
+		transform:translateX(p2r(-26*4)) translateY(p2r(10));
+	}
+	50%{
+		transform:translateX(p2r(-26*5)) translateY(p2r(-10));
+	}
+	60%{
+		transform:translateX(p2r(-26*6)) translateY(p2r(10));
+	}
+	70%{
+		transform:translateX(p2r(-26*7)) translateY(p2r(-10));
+	}
+	80%{
+		transform:translateX(p2r(-26*8)) translateY(p2r(10));
+	}
+	90%{
+		transform:translateX(p2r(-26*9)) translateY(p2r(-10));
+	}
+	100%{
+		transform:translateX(p2r(-26*10)) translateY(p2r(10));
+	}
+	
+}
+
+
+/*第二页*/
+.welcome{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: deepskyblue;
+	top: 0;
+	z-index: 1;
+	.info{
+		position: absolute;
+		width: (397/32)*1rem;
+		height: (224/32)*1rem;
+		background: url(../imgs/welcome/tiitle.png) no-repeat center / 100% 100%;
+		top:(42/32)*1rem;
+		left: 50%;
+		margin-left:-(397/32/2)*1rem;
+		.hello{
+			position: absolute;
+			width: (70/32)*1rem;
+			height: (75/32)*1rem;
+			background: url(../imgs/welcome/hello.png) no-repeat center / 100% 100%;
+			top:(20/32)*1rem;
+			right:(8/32)*1rem;
+		}
+	}
+	.bear-box{
+		position: absolute;
+		width: (167/32)*1rem;
+		height: (279/32)*1rem;
+		bottom:(346/32)*1rem;
+		left: 50%;
+		margin-left:-(167/32/2)*1rem;
+		.bear{
+			position: absolute;
+			width:100%;
+			height:100%;
+			background: url(../imgs/welcome/bear.png) no-repeat center / 100% 100%;
+			top:0;
+			left: 0;
+		}
+		.smoke{
+			position: absolute;
+			width:(167/32)*1rem;
+			height:(32/32)*1rem;
+			background: url(../imgs/welcome/smoke.png) no-repeat center / 100% 100%;
+			bottom: 0;
+		}
+	}
+	.cloud{
+		position: absolute;
+		width: (640/32)*1rem;
+		height: (673/32)*1rem;
+		bottom:0;
+		background: url(../imgs/welcome/cloud.png) no-repeat center / 100% 100%;
+	}
+	.grass1{
+		position: absolute;
+		width: (640/32)*1rem;
+		height: (396/32)*1rem;
+		bottom:0;
+		background: url(../imgs/welcome/grass1.png) no-repeat center / 100% 100%;
+	}
+	.trees{
+		position: absolute;
+		width: (599/32)*1rem;
+		height: (71/32)*1rem;
+		bottom:(352/32)*1rem;
+		background: url(../imgs/welcome/trees.png) no-repeat center / 100% 100%;
+	}
+	.grass2{
+		position: absolute;
+		width: (640/32)*1rem;
+		height: (228/32)*1rem;
+		bottom:0;
+		background: url(../imgs/welcome/grass2.png) no-repeat center / 100% 100%;
+	}
+	.rotate_btn_box{
+		position: absolute;
+		width: (208/32)*1rem;
+		height: (208/32)*1rem;
+		bottom:(86/32)*1rem;
+		left: 50%;
+		margin-left:-(208/32/2)*1rem;
+		display: flex;
+		justify-content:center;
+		align-items:center;
+		.circle1{
+			position: absolute;
+			width:100%;
+			height:100%;
+			background: url(../imgs/welcome/circle1.png) no-repeat center / 100% 100%;
+			top:0;
+			left: 0;
+		}
+		.circle2{
+			position: absolute;
+			width:100%;
+			height:100%;
+			background: url(../imgs/welcome/circle2.png) no-repeat center / 100% 100%;
+			top:0;
+			left: 0;
+		}
+		.btn{
+			position: absolute;
+			width:(124/32)*1rem;
+			height:(124/32)*1rem;
+			background: url(../imgs/welcome/btn.png) no-repeat center / 100% 100%;
+			cursor: pointer;
+		}
+	}
+	.hint{
+		position: absolute;
+		color: #fff;
+		bottom:(40/32)*1rem;
+		left:0;right:0;
+		margin: auto;
+		text-align: center;
+		opacity: 0;
+	}
+}
+.welcome.animate{
+	.grass1{
+		animation: grass1 .5s forwards;
+	}
+	.grass2{
+		animation: grass2 .5s .5s forwards;
+	}
+	.trees{
+		animation: trees .5s 1s forwards;
+	}
+	.rotate_btn_box{
+		animation: btnAppear .5s 1.5s forwards;
+		.circle2{
+			animation:rotate 1s linear infinite;
+		}
+	}
+	.bear-box{
+		animation: bearDown .5s 2s forwards;
+	}
+	.bear{
+		animation: upAndDown .5s infinite;
+	}
+	.smoke{
+		animation: small2Big .5s infinite;
+	}
+	.info{
+		animation: bearDown .5s 3s forwards;
+		.hello{
+			animation: small2Big .5s 3.5s forwards;
+		}
+	}
+	.hint{
+		animation: appear .5s 1.5s forwards;
+	}
+}
+// 直接调整样式为动画的初始状态
+.welcome{
+	.grass1{
+		height: p2r(20);
+	}
+	.grass2,.trees,.bear-box,.smoke,.info,.hello{opacity: 0;}
+	.rotate_btn_box{opacity: 0;transform:scale(0,0);}
+
+}
+@keyframes appear{
+	to{opacity: 1;}
+}
+@keyframes grass1{
+	to{height:p2r(396);}
+}
+@keyframes grass2{
+	from{
+		transform:scale(2,1);
+	}
+	to{opacity: 1;}
+}
+@keyframes trees{
+	from{
+		transform:translateY(-200%);
+	}
+	80%{
+		transform:translateY(10%);
+		opacity: 1;
+	}
+	90%{
+		transform:translateY(-10%);
+		opacity: 1;
+	}
+	100%{
+		transform:none;
+		opacity: 1;
+	}
+}
+@keyframes btnAppear{
+	to{opacity: 1;transform:none;}
+}
+@keyframes rotate{
+	to{
+		transform:rotate(360deg);
+	}
+}
+@keyframes bearDown{
+	from{
+		transform:translateY(-50%);
+	}
+	to{opacity: 1;transform:none;}
+}
+@keyframes upAndDown{
+	from{
+		transform:translateY(-5%);
+	}
+	to{
+		transform:translateY(4%);
+	}
+}
+@keyframes small2Big{
+	from{
+		
+		transform:scale(0,0);
+	}
+	to{
+		opacity: 1;
+		transform:none;
+	}
+}
+@keyframes bearDisappear{
+	from{
+		
+		opacity: 1;
+	}
+	to{
+		opacity: 0;
+		transform:translateY(100%) scale(2,2);
+	}
+}
+
+// swiper样式
+.swiper-container{
+	width: 100%;
+	height: 100%;
+}
+// 轮播的页面
+// 公共样式部分
+.swiper-slide{
+	.title{
+		position: absolute;
+		left: p2r(32);
+		top: p2r(32);
+		padding-left: p2r(20);
+		h3{
+			color: #fff;
+			font-size: p2r(64);
+		}
+		p{
+			color: #fff;
+			padding-top: p2r(12);
+			font-size: p2r(24);
+		}
+		.line{
+			height: 100%;
+			width: p2r(5);
+			background-color: #fff;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+}
+.page1{
+	background-color: #be8651;
+	.sphere{
+		@include bgc('../imgs/page1/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.b_bear{
+		@include bg('../imgs/page1/bear.png');
+		@include size(178,134);
+		bottom:0;
+		right:p2r(38);
+	}
+	.scroll_page1{
+		.bg{
+			@include bgc('../imgs/page1/bg1.png',576);
+			@include size(576,573);
+			bottom: p2r(252);
+		}
+		.person{
+			z-index: 1;
+			@include bgc('../imgs/page1/person.png',439);
+			@include size(439,349);
+			bottom: p2r(252);
+			.files{
+				background-size: p2r(115) p2r(114);
+				@include size(85,50);
+				bottom: p2r(104);
+				right: p2r(27);
+				position: absolute;
+				.paper1{
+					background: url('../imgs/page1/papers.png') no-repeat;
+					background-position:p2r(-45) p2r(-32);
+					background-size: p2r(115) p2r(114);
+					@include size(86,26);
+					position: absolute;
+					top: p2r(32);
+					left: p2r(45);
+				}
+				.paper2{
+					background: url('../imgs/page1/papers.png') no-repeat;
+					background-position:0 0;
+					background-size: p2r(115) p2r(114);
+					@include size(64,20);
+					top: 0;
+					left: 0;
+				}
+			}
+		}
+		.message_container{
+			z-index: 1;
+			@include bgc('../imgs/page1/qipao.png',363);
+			@include size(363,119);
+			bottom:p2r(140);
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			.info{
+				@include bgc('../imgs/page1/text_work.png',220);
+				@include size(220,30);
+			}
+		}
+	}
+	.scroll_page2{
+		.bg{
+			@include bgc('../imgs/page1/bg2.png',576);
+			@include size(576,573);
+			bottom: p2r(340);
+		}
+		.person{
+			z-index: 1;
+			@include bgc('../imgs/page1/person2.png',439);
+			@include size(439,349);
+			bottom: p2r(212);
+			.eye{
+				@include bgc('../imgs/page1/eye.png',42);
+				@include size(42,16);
+				top: p2r(97);
+				left: p2r(156);
+			}
+		}
+		.message_container{
+			z-index: 1;
+			@include bgc('../imgs/page1/qipao.png',363);
+			@include size(363,119);
+			bottom:p2r(140);
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			.info{
+				@include bgc('../imgs/page1/text_home.png',220);
+				@include size(220,30);
+			}
+		}
+	}
+	.scroll_page3{
+		.bg{
+			@include bgc('../imgs/page1/bg3.png',561);
+			@include size(561,516);
+			bottom: p2r(270);
+		}
+		.person{
+			z-index: 1;
+			@include bgc('../imgs/page1/person3.png',503);
+			@include size(503,229);
+			bottom: p2r(300);
+			.word1{
+				@include bg('../imgs/page1/word1.png');
+				@include size(92,83);
+				left:p2r(7);
+				bottom: p2r(194);
+			}
+			.word2{
+				@include bg('../imgs/page1/word2.png');
+				@include size(77,70);
+				left:p2r(115);
+				bottom: p2r(245);
+			}
+			.word3{
+				@include bg('../imgs/page1/word3.png');
+				@include size(115,104);
+				right:p2r(130);
+				bottom: p2r(220);
+			}
+			.word4{
+				@include bg('../imgs/page1/word4.png');
+				@include size(79,73);
+				right:p2r(12);
+				bottom: p2r(230);
+			}
+		}
+		.message_container{
+			z-index: 1;
+			@include bgc('../imgs/page1/qipao.png',363);
+			@include size(363,119);
+			bottom:p2r(140);
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			.info{
+				@include bgc('../imgs/page1/text_res.png',220);
+				@include size(220,30);
+			}
+		}
+	}
+}
+// page1默认效果
+.page1{
+	.scroll_page1,.scroll_page2,.scroll_page3{
+		.bg{
+			opacity: 0;
+			transform-origin:50% 200%;
+		}
+		.person{
+			opacity: 0;
+			transform-origin:50% 200%;
+		}
+		.message_container{
+			opacity: 0;
+			transform-origin:right bottom;
+		}
+	}
+}
+// page1动画
+.page1.animate{
+	.scroll_page1{
+		.bg{
+			animation:rotateInOut 2s forwards;
+		}
+		.person{
+			animation:rotateInOut 2s .2s forwards;
+			.paper1{
+				animation:l2r2l 2s infinite;
+			}
+			.paper2{
+				animation:l2r2l 2s .2s infinite;
+			}
+		}
+		.message_container{
+			animation:rotateInOut 1s .5s forwards;
+		}
+	}
+	.scroll_page2{
+		.bg{
+			animation:rotateInOut 2s  2.2s forwards;
+		}
+		.person{
+			animation:rotateInOut 2s  2.4s forwards;
+			.eye{
+				animation:zhayan .4s infinite;
+			}
+		}
+		.message_container{
+			animation:rotateInOut 1s 2.7s forwards;
+		}
+	}
+	.scroll_page3{
+		.bg{
+			animation:rotateInNoOut 1s  4.4s forwards;
+		}
+		.person{
+			animation:rotateInNoOut 1s  4.6s forwards;
+		}
+		.message_container{
+			animation:rotateInNoOut 1s 4.9s forwards;
+		}
+		.word1{
+			animation:runAllOver 1s infinite;
+		}
+		.word2{
+			animation:runAllOver .4s infinite;
+		}
+		.word3{
+			animation:runAllOver .8s infinite;
+		}
+		.word4{
+			animation:runAllOver 1.3s infinite;
+		}
+	}
+}
+@keyframes rotateInNoOut{
+	0%{
+		transform:rotateZ(90deg);
+	}
+	95%{
+		transform:rotateZ(-5deg);
+		opacity: 1;
+	}
+	100%{
+		transform:rotateZ(0);
+		opacity: 1;
+	}
+}
+@keyframes rotateInOut{
+	0%{
+		transform:rotateZ(90deg);
+	}
+	25%{
+		transform:rotateZ(-5deg);
+		opacity: 1;
+	}
+	30%{
+		transform:rotateZ(0);
+		opacity: 1;
+	}
+	70%{
+		transform:rotateZ(0);
+		opacity: 1;
+	}
+	75%{
+		transform:rotateZ(5deg);
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+		transform:rotateZ(-90deg);
+	}
+}
+@keyframes runAllOver{
+	25%{
+		transform:translateX(4%) translateY(0);
+	}
+	50%{
+		transform:translateX(0) translateY(-4%);
+	}
+	75%{
+		transform:translateX(-4%) translateY(0);
+	}
+	100%{
+		transform:translateX(0) translateY(4%);
+	}
+}
+
+@keyframes l2r2l{
+	30%{
+		transform:translateX(-100%);
+	}
+	70%{
+		transform:translateX(100%);
+	}
+	
+	100%{
+		transform:none;
+	}
+}
+@keyframes zhayan{
+
+	30%{
+		transform:scale(1,0);
+	}
+	70%{
+		transform:scale(1,0);
+	}
+	100%{
+		transform:scale(1,0);
+	}
+}
+
+
+.page2{
+	background-color: #ee4143;
+	.bg{
+		@include bgc('../imgs/page1/bg2.png',576);
+		@include size(576,573);
+		bottom: p2r(340);
+	}
+	.sphere{
+		@include bgc('../imgs/page2/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.bear{
+		@include bg('../imgs/page2/bear.png');
+		@include size(243,349);
+		bottom: p2r(252);
+		right: 0;
+		.leg{
+			@include bg('../imgs/page2/leg.png');
+			@include size(81,93);
+			bottom:0;
+			left:p2r(83);
+		}
+		.face1{
+			@include bg('../imgs/page2/face1.png');
+			@include size(102,102);
+			top:0;
+			left:p2r(-102);
+		}
+		.face2{
+			@include bg('../imgs/page2/face2.png');
+			@include size(101,102);
+			top:p2r(-102);
+			right:p2r(-101/2);
+		}
+	}
+}
+@keyframes move{
+	1%{opacity: 1;}
+	49%{
+		opacity: 1;
+		transform:translateX(-180%);
+	}
+	50%{
+		opacity: 1;
+		transform:translateX(-180%) rotateY(-180deg);
+	}
+	100%{
+		opacity: 1;
+		transform:translateX(0) rotateY(-180deg);
+	}
+
+	
+}
+@keyframes run{
+
+	to{
+		opacity: 0;
+	}
+	
+}
+@keyframes runAllOver2{
+	25%{
+		transform:translateX(20%) translateY(0);
+	}
+	50%{
+		transform:translateX(0) translateY(-20%);
+	}
+	75%{
+		transform:translateX(-20%) translateY(0);
+	}
+	100%{
+		transform:translateX(0) translateY(20%);
+	}
+}
+// 默认初始状态
+.page2{
+	// .bg{
+	// 	opacity: 0;
+	// 	transform-origin:50% 200%;
+	// }
+	.bear{opacity: 0}
+	.leg{
+		opacity: 1;
+	}
+}
+.page2.animate{
+	
+	.bear{
+
+		animation:move 4s 2s infinite;
+	}
+	.face1{
+		animation:runAllOver2 .6s infinite;
+	}
+	.face2{
+		animation:runAllOver2 1.3s infinite;
+	}
+	.leg{
+		animation:run .4s infinite;
+	}
+}
+.page3{
+	background-color: #dd8a03;
+	.bg{
+		@include bgc('../imgs/page3/bg4.png',575);
+		@include size(575,410);
+		bottom: p2r(440);
+	}
+	.sphere{
+		@include bgc('../imgs/page3/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.content{
+		@include size(574,421);
+		position:absolute;
+		left: 50%;
+		margin-left: p2r(-574/2);
+		bottom: p2r(252);
+		.person{
+			position: absolute;
+			background: url('../imgs/page3/person.png') no-repeat;
+			background-position:bottom left;
+			background-size: p2r(574) p2r(421);
+			@include size(187,346);
+			bottom:0;
+			left: 0;
+			
+			.word1{
+				position: absolute;
+				background: url('../imgs/page3/person.png') no-repeat;
+				background-size: p2r(574) p2r(421);
+				background-position:0 0;
+				@include size(64,70);
+				top: p2r(-70);
+				left: 0;
+			}
+			.word2{
+				background: url('../imgs/page3/person.png') no-repeat;
+				background-size: p2r(574) p2r(421);
+				background-position:p2r(-64) 0;
+				@include size(86,70);
+				position: absolute;
+				top: p2r(-70);
+				left: p2r(64);
+			}
+			.iphone{
+				position: absolute;
+				background: url('../imgs/page3/person.png') no-repeat;
+				background-position:bottom right;
+				background-size: p2r(574) p2r(421);
+				@include size(263,421);
+				bottom: 0;
+				right: p2r(-387);
+			}
+			.hand{
+				@include bg('../imgs/page3/hands.png');
+				@include size(273,211);
+				bottom: p2r(100);
+				right: p2r(80);
+			}
+		}
+		
+	}
+}
+
+// 默认初始状态
+.page3{
+	.person{
+		opacity: 0;
+		transform-origin:50% 200%;
+	}
+	.hand{
+		opacity: 0;
+		transform-origin:100% 100%;
+	}
+	.word1,.word2{opacity: 0;
+	}
+}
+.page3.animate{
+	.person{
+		animation:rotateInNoOut 2s 1.2s forwards;
+	}
+	
+	.word1{
+		animation:showWords .6s 4.4s infinite;
+	}
+	.word2{
+		animation:showWords 1.3s 4.4s infinite;
+	}
+	.hand{
+		animation:showHands 1.2s 3.2s forwards;
+	}	
+}
+@keyframes showHands{
+	from{
+		transform:scale(0,0);
+	}
+	to{
+		opacity: 1;
+		transform:none;
+	}
+}
+@keyframes showWords{
+	25%{
+		opacity: 1;
+		transform:translateX(20%) translateY(0);
+	}
+	50%{
+		opacity: 1;
+		transform:translateX(0) translateY(-20%);
+	}
+	75%{
+		opacity: 1;
+		transform:translateX(-20%) translateY(0);
+	}
+	100%{
+		opacity: 1;
+		transform:translateX(0) translateY(20%);
+	}
+}
+.page4{
+	background-color: #3fa100;
+	.bg{
+		@include bgc('../imgs/page4/bg.png',561);
+		@include size(561,516);
+		bottom: p2r(400);
+	}
+	.sphere{
+		@include bgc('../imgs/page4/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.bear{
+		@include bgc('../imgs/page4/bear.png',270);
+		@include size(270,352);
+		bottom:p2r(200);
+	}
+	.card1{
+		@include bg('../imgs/page4/card1.png');
+		@include size(160,175);
+		bottom:p2r(435);
+		left:p2r(32);
+	}
+	.card2{
+		@include bgc('../imgs/page4/card2.png',161);
+		@include size(161,180);
+		bottom:p2r(530);
+	}
+	.card3{
+		@include bg('../imgs/page4/card3.png');
+		@include size(167,184);
+		bottom:p2r(420);
+		right:p2r(45);
+	}
+}
+// 默认初始状态
+.page4{
+	.bear{
+		opacity: 0;
+	}
+	.card1,.card2,.card3{
+		opacity: 0;
+	}
+	
+}
+
+.page4.animate{
+	.bear{
+		animation:bearDown .5s 2s forwards;
+	}
+	.card1,.card2,.card3{
+		animation:small2Big .5s 2.5s forwards;
+	}
+}
+.page5{
+	background-color: #0098cf;
+	.bg{
+		@include bgc('../imgs/page5/bg.png',590);
+		@include size(590,492);
+		bottom: p2r(300);
+	}
+	.sphere{
+		@include bgc('../imgs/page5/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.cloud{
+		@include bgc('../imgs/page5/cloud.png',432);
+		@include size(432,160);
+		bottom:p2r(645);
+		.snow{
+			@include bg('../imgs/page5/snow.png');
+			@include size(32,32);
+			bottom: 0;
+		}
+		.snow:nth-child(2){left: p2r(64)}
+		.snow:nth-child(3){left: p2r(64*2)}
+		.snow:nth-child(4){left: p2r(64*3)}
+		.snow:nth-child(5){left: p2r(64*4)}
+		.snow:nth-child(6){left: p2r(64*5)}
+	}
+	.bear{
+		@include bgc('../imgs/welcome/bear.png',230);
+		@include size(230,390);
+		bottom:p2r(175);
+		.smoke{
+			@include bgc('../imgs/welcome/smoke.png',167);
+			@include size(167,32);
+			bottom:0;
+		}
+	}
+}
+// 动画
+@keyframes snowLeft{
+	from{}
+	to{
+		opacity: 0;
+		transform:translateY(1200%) translateX(-200%);
+	}
+}
+@keyframes snowRight{
+	from{}
+	to{
+		opacity: 0;
+		transform:translateY(1200%) translateX(200%);
+	}
+}
+// 默认初始状态
+.page5{
+	.bear,.smoke,.cloud{
+		opacity: 0;
+	}
+}
+.page5.animate{
+	.bear{
+		animation:bearDown .5s 2s forwards, upAndDown .5s 2.5s infinite;
+		.smoke{
+			animation: small2Big .5s infinite;
+		}
+	}
+	.cloud{
+		animation: small2Big .5s 3s forwards,runAllOver 1s 3.5s infinite;
+		
+		.snow:nth-child(1){
+			animation:snowLeft .5s 3s infinite;
+		}
+		.snow:nth-child(2){
+			animation:snowRight 1.5s 3s infinite;
+		}
+		.snow:nth-child(3){
+			animation:snowLeft 1s 3s infinite;
+		}
+		.snow:nth-child(4){
+			animation:snowRight 2s 3s infinite;
+		}
+		.snow:nth-child(5){
+			animation:snowLeft .6s 3s infinite;
+		}
+		.snow:nth-child(6){
+			animation:snowRight .8s 3s infinite;
+		}
+	}
+	
+}
+.page6{
+	background-color: #b527a0;
+	.bg{
+		@include bgc('../imgs/page4/bg.png',590);
+		@include size(590,492);
+		bottom: p2r(380);
+	}
+	.sphere{
+		@include bgc('../imgs/page6/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.bear{
+		@include bgc('../imgs/page6/bear.png',285);
+		@include size(285,328);
+		bottom:p2r(200);
+		.gift-box{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			.gift1{
+				@include bgc('../imgs/page6/gift1.png',42);
+				@include size(42,36);
+			}
+			.gift2{
+				@include bgc('../imgs/page6/gift2.png',113);
+				@include size(113,131);
+			}
+			.gift3{
+				@include bgc('../imgs/page6/gift3.png',116);
+				@include size(116,122);
+			}
+			.gift4{
+				@include bgc('../imgs/page6/gift4.png',105);
+				@include size(105,79);
+			}
+			.gift5{
+				@include bgc('../imgs/page6/gift5.png',119);
+				@include size(119,71);
+			}
+			.gift6{
+				@include bgc('../imgs/page6/gift6.png',109);
+				@include size(109,125);
+			}
+			.gift7{
+				@include bgc('../imgs/page6/gift7.png',93);
+				@include size(93,114);
+			}
+			.gift8{
+				@include bgc('../imgs/page6/gift8.png',149);
+				@include size(149,157);
+			}
+			.gift9{
+				@include bgc('../imgs/page6/gift12.png',51);
+				@include size(51,31);
+			}
+			.gift10{
+				@include bgc('../imgs/page6/gift10.png',66);
+				@include size(66,62);
+			}
+			.gift11{
+				@include bgc('../imgs/page6/gift12.png',51);
+				@include size(51,31);
+			}
+			.gift12{
+				@include bgc('../imgs/page6/gift1.png',42);
+				@include size(42,36);
+			}
+			
+
+		}
+		.gift-box{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			>div:nth-child(1){
+				@include size(42,36);
+				transform:rotateZ(29deg) translateY(p2r(240));
+			}
+			>div:nth-child(2){
+				@include size(113,131);
+				transform:rotateZ(29*2deg) translateY(p2r(240));
+			}
+			>div:nth-child(3){
+				@include size(116,122);
+				transform:rotateZ(29*3deg) translateY(p2r(240));
+			}
+			>div:nth-child(4){
+				@include size(105,79);
+				transform:rotateZ(29*4deg) translateY(p2r(240));
+			}
+			>div:nth-child(5){
+				@include size(119,71);
+				transform:rotateZ(29*5deg) translateY(p2r(240));
+			}
+			>div:nth-child(6){
+				@include size(109,125);
+				transform:rotateZ(29*6deg) translateY(p2r(240));
+			}
+			>div:nth-child(7){
+				@include size(93,114);
+				transform:rotateZ(29*7deg) translateY(p2r(240));
+			}
+			>div:nth-child(8){
+				@include size(149,157);
+				transform:rotateZ(29*8deg) translateY(p2r(240));
+			}
+			>div:nth-child(9){
+				@include size(51,31);
+				transform:rotateZ(29*9deg) translateY(p2r(240));
+			}
+			>div:nth-child(10){
+				@include size(66,62);
+				transform:rotateZ(29*10deg) translateY(p2r(240));
+			}
+			>div:nth-child(11){
+				@include size(51,31);
+				transform:rotateZ(29*11deg) translateY(p2r(240));
+			}
+			>div:nth-child(12){
+				@include size(42,36);
+				transform:rotateZ(29*12deg-10deg) translateY(p2r(240));
+			}	
+
+		}
+	}
+
+}
+@keyframes none2Normal{
+	from{
+		transform:none;
+	}
+	to{
+		opacity: 1;
+	}
+	
+}
+@keyframes big2Small{
+	from{
+		
+	}
+	to{
+		transform:scale(0,0);
+		opacity: 0;
+	}
+	
+}
+// 默认初识样式
+.page6{
+	.gift-box>div{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		opacity: 0;
+	}
+}
+.page6.animate{
+	// .gift-box{
+	// 	animation:rotate 1.4s 1s 1 linear,big2Small 1s 2.4s forwards;
+	// }
+	// .gift-box>div{
+	// 	animation:none2Normal 1s infinite;
+	// }
+	@for $i from 1 through 12{
+		.gift-box>div:nth-child(#{$i}){
+			animation:none2Normal 2s $i*0.1s infinite;
+		}
+	}
+	@for $i from 1 through 12{
+		.gift-box>div:nth-child(#{$i})>div{
+			animation:rotate 2s ($i*0.1s) infinite;
+		}
+	}
+	// .gift-box>div>div{
+	// 	animation:rotate 1.4s 1s infinite;
+	// }
+}
+.page7{
+	background-color: #19072a;
+	.bg{
+		@include bgc('../imgs/page7/bg.png',337);
+		@include size(337,459);
+		bottom: p2r(300);
+		.light{
+			@include bg('../imgs/page7/light.png');
+			bottom: 0;
+			@include size(337,369);
+		}
+	}
+	.sphere{
+		@include bgc('../imgs/page7/sphere.png',640);
+		@include size(640,356);
+		bottom:0;
+	}
+	.motobike{
+		@include bg('../imgs/page7/motobike.png');
+		@include size(200,137);
+		bottom: p2r(335);
+		left: p2r(125);
+	}
+	.share{
+		@include bgc('../imgs/page7/share.png',379);
+		@include size(379,113);
+		bottom: p2r(140);
+	}
+	.info{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		font-size: p2r(24);
+		color: #b579d6;
+		bottom: p2r(70);
+
+	}
+}
+
+// 由于所有的title动画都一样，所以写一个公共的结构
+.title{
+	h3,p{opacity: 0;}
+	.line{height: 0% !important;}
+}
+@keyframes r2l{
+	from{
+		transform:translateX(100%)
+	}
+	to{
+		transform:none;
+		opacity: 1;
+	}
+}
+@keyframes heightBigger{
+	
+	to{
+		height: 100%;
+	}
+}
+// 公共bg默认样式
+.swiper-slide{
+	.bg{
+		opacity: 0;
+		transform-origin:50% 200%;
+	}
+}
+.swiper-slide.animate{
+	.title{
+		h3{
+			animation:r2l .5s forwards;
+		}
+		p{
+			animation:r2l .5s 1s forwards;
+		}
+		.line{
+			animation:heightBigger 2s forwards;
+		}
+	}
+	.bg{
+		animation:rotateInNoOut 2s forwards;
+	}
+}
+
+
+// 播放按钮的样式
+.audioPlay{
+	@include size(36,36);
+	position: absolute;
+	top: p2r(32);
+	right:p2r(32);
+	background: url('../imgs/music/play.png') no-repeat center / 100% 100%;
+	z-index: 998;
+	animation:rotate 3s linear infinite;
+
+}
